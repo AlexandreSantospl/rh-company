@@ -26,10 +26,10 @@ export default function BarraLateral(): React.ReactElement {
     };
 
     return (
-        <Flex w="fit-content" position="relative" h={"100vh"} bgColor={"green"}>
+        <Flex w="fit-content" position="relative" h={"100vh"} >
             <Flex
                 w={aberto && !selectedRoute ? "20rem" : "4.5rem"}
-                backgroundColor="orange"
+                backgroundColor="navy.900"
                 p="1.5rem 0 1rem"
                 direction="column"
                 align="flex-end"
@@ -70,14 +70,13 @@ export default function BarraLateral(): React.ReactElement {
             </Flex>
             <Flex
                 w={selectedRoute ? "calc(20rem - 4.5rem)" : "0"}
-                backgroundColor="orange_400"
                 p={selectedRoute ? "1.5rem 0.75rem 1rem" : "0"}
                 direction="column"
                 align="flex-start"
                 justify="flex-start"
                 gap="0.75rem"
                 transition="width 0.2s"
-                bgColor={"red"}
+                bgColor={"navy.800"}
             >
                 <Button
                     hidden={!selectedRoute}
