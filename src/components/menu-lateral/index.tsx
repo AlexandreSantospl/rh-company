@@ -5,6 +5,7 @@ import OpcaoBotaoBarraLateral from "./buttonOpcionalSideBar";
 import BotaoBarraLateral from "./buttonSideBar";
 import { FiChevronRight } from "react-icons/fi";
 import { useRouter } from "next/router";
+import { InfoIcon } from "@chakra-ui/icons";
 
 interface RotasBarraLateral {
     rotulo: string;
@@ -27,6 +28,7 @@ export default function BarraLateral(): React.ReactElement {
 
     return (
         <Flex w="fit-content" position="relative" h={"100vh"} >
+
             <Flex
                 w={aberto && !selectedRoute ? "20rem" : "4.5rem"}
                 backgroundColor="navy.900"
@@ -36,6 +38,7 @@ export default function BarraLateral(): React.ReactElement {
                 justify="space-between"
                 transition="width 0.2s"
             >
+
                 <Flex
                     w="100%"
                     display="flex"
@@ -43,6 +46,21 @@ export default function BarraLateral(): React.ReactElement {
                     gap="0.75rem"
                     pl="0.75rem"
                 >
+                    <Flex w="100%" justifyContent="center" align="center" pb="0.5rem" pr="0.5rem">
+                        {aberto && !selectedRoute ? (
+                            <>
+                                <Flex align="center" gap="0.5rem">
+                                    <Text>RH Company</Text>
+                                    <InfoIcon />
+                                </Flex>
+                            </>
+                        ) : (
+                            (
+                                <InfoIcon />
+                            )
+                        )}
+                    </Flex>
+
                     {rotasBarraLateral.map((rota, index) => (
                         <BotaoBarraLateral
                             overflowX={"hidden"}
@@ -51,8 +69,9 @@ export default function BarraLateral(): React.ReactElement {
                             barraAberta={aberto}
                             isSelected={selectedRoute?.rota === rota.rota}
                             icone={rota.icone}
-                            rotulo={rota.rotulo}
+                            rotulo={aberto && !selectedRoute ? rota.rotulo : ""}
                             rota={rota.rota}
+                            justifyContent={aberto && !selectedRoute ? "space-between" : "center"}
                             onClick={() => {
                                 if (rota.rotas) {
                                     if (selectedRoute === rota) setSelectedRoute(null);
@@ -91,8 +110,8 @@ export default function BarraLateral(): React.ReactElement {
                     fontFamily="UltimaPro"
                     fontWeight="bold"
                     fontSize="1rem"
-                    color={"orange_500"}
-                    backgroundColor="orange_400"
+                    color={"white"}
+                    backgroundColor="navy.800"
                     _hover={{
                         color: "orange_500",
                     }}
@@ -112,6 +131,8 @@ export default function BarraLateral(): React.ReactElement {
                 ))}
             </Flex>
             <Button
+                bgColor={"navy.900"}
+                color={"white"}
                 position="absolute"
                 right="0"
                 bottom={"1.5rem"}

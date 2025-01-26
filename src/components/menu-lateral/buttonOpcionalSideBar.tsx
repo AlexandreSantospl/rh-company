@@ -29,14 +29,8 @@ export default function OpcaoBotaoBarraLateral({
       fontFamily="NexaBook"
       fontWeight={"bold"}
       fontSize="0.875rem"
-      color={pathname === rotaItem.rota ? "white" : "black"}
+      color={pathname === rotaItem.rota ? "navy.800" : "black"}
       backgroundColor={pathname === rotaItem.rota ? "orange_500" : "orange_400"}
-      _hover={{
-        color: pathname !== rotaItem.rota && "orange_500",
-      }}
-      _active={{
-        color: pathname !== rotaItem.rota && "orange_500",
-      }}
       onClick={() => {
         router.push(rotaItem.rota);
       }}

@@ -1,17 +1,16 @@
-import { AddIcon } from "@chakra-ui/icons";
-import { IconButton } from "@chakra-ui/react";
+import { EmailIcon, HamburgerIcon, PhoneIcon, } from "@chakra-ui/icons";
 
 
 export const rotasBarraLateral = [
     {
         rotulo: "Inicio",
-        icone: <IconButton aria-label="Add item" icon={<AddIcon />} />,
+        icone: <HamburgerIcon />,
         rota: "/",
     },
     {
         rotulo: "Recursos",
-        icone: <IconButton aria-label="Add item" icon={<AddIcon />} />,
-        rota: "/",
+        icone: <EmailIcon />,
+        rota: "/teste",
         rotas: [
             {
                 rotulo:
@@ -29,7 +28,7 @@ export const rotasBarraLateral = [
 
     {
         rotulo: "Rota unica",
-        icone: <IconButton aria-label="Add item" icon={<AddIcon />} />,
+        icone: <PhoneIcon />,
         rota: "/clientes",
     },
 

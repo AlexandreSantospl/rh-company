@@ -1,7 +1,7 @@
 import { Button, Flex, Text, ButtonProps, IconButton } from "@chakra-ui/react";
 import React from "react";
 import { useRouter } from "next/router"; // Use o useRouter do Next.js
-import { AddIcon } from "@chakra-ui/icons";
+import { AddIcon, ChevronDownIcon } from "@chakra-ui/icons";
 
 interface BotaoBarraLateralProps extends ButtonProps {
   currentRoute: boolean;
@@ -9,7 +9,7 @@ interface BotaoBarraLateralProps extends ButtonProps {
   isSelected: boolean;
   icone: React.ReactElement;
   rotulo: string;
-  rota: string; 
+  rota: string;
 }
 
 export default function BotaoBarraLateral({
@@ -24,15 +24,15 @@ export default function BotaoBarraLateral({
   const router = useRouter();
 
   function getBackgroundColor() {
-    if (currentRoute && (!barraAberta || isSelected)) return "orange_500";
-    if (!currentRoute && !isSelected) return "orange_300";
-    if ((!currentRoute && isSelected) || (barraAberta && isSelected)) return "orange_400";
+    if (currentRoute && (!barraAberta || isSelected)) return "white";
+    if (!currentRoute && !isSelected) return "white";
+    if ((!currentRoute && isSelected) || (barraAberta && isSelected)) return "white";
   }
 
   function getTextColor() {
-    if (currentRoute && (!barraAberta || isSelected)) return "white";
-    if (!currentRoute && !isSelected) return "black";
-    if ((!currentRoute && isSelected) || (barraAberta && isSelected)) return "orange_500";
+    if (currentRoute && (!barraAberta || isSelected)) return "navy.900";
+    if (!currentRoute && !isSelected) return "navy.900";
+    if ((!currentRoute && isSelected) || (barraAberta && isSelected)) return "navy.900";
   }
 
   function getBorderRadius() {
@@ -55,14 +55,17 @@ export default function BotaoBarraLateral({
       backgroundColor={getBackgroundColor()}
       onClick={() => router.push(rota)}
       _hover={{
-        color: currentRoute ? "white" : "orange_500",
-        backgroundColor: currentRoute ? "orange_500" : "orange_400",
+        color: currentRoute ? "navy.600" : "orange_500",
       }}
       {...props}
       transition="width 0.1s"
     >
-      <Flex h="100%" align="center" justify="center">
-        <Text fontSize="0.875rem">{rotulo}</Text>
+      <Flex h="100%" alignItems="center" justifyContent="center" gap={"0.5rem"}>
+        {icone}
+        {rotulo !== "" ? (
+          <Text fontSize="0.875rem">{rotulo}</Text>
+
+        ) : undefined}
       </Flex>
 
       {props.children}
